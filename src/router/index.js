@@ -11,7 +11,7 @@ Object.keys(fileroute).forEach(item => {
         routes.push(i)
     })
 })
-console.log(fileroute);
+console.log(import.meta);
 console.log(routes);
 // 创建路由对象
 const router = new vuerouter({
@@ -24,5 +24,11 @@ const router = new vuerouter({
 //     return originalPush.call(this, location).catch(err => err)
 // }
 
+router.beforeEach((to,from,next)=>{
+    
+    console.log(to);
+    console.log(from);
+    console.log(next);
+})
 // 导出路由
 export default router

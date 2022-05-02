@@ -1,5 +1,5 @@
 <template>
-  <div class="logup"></div>
+  <div class="logup">I love you !</div>
 </template>
 
 <script>
