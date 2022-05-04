@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <!-- <login /> -->
+    <!-- 之前这里router-view不生效的原因在于router有全局守卫 -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import login from "view/Login/Login.vue";
 export default {
   name: "App",
-  //   components:{
-  //       login
-  //   }
+    // components:{
+    //     home
+    // }
 };
 </script>
 
-<style scoped>
+<style>
+body,html{
+  margin:0;
+  padding:0;
+}
 </style>

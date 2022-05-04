@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "babel-preset-vue": "^2.0.2",
     "vite": "^2.9.5"
   },
   "dependencies": {
