@@ -1,7 +1,7 @@
 <template>
     <div class="login">
     <div class="form">
-      <div class="title c"><span>极速登录</span></div>
+      <div class="title c"><span>极速注册</span></div>
       <!-- 手机号 -->
       <div class="pho c">
         <input type="text" v-model="phone" placeholder="请输入手机号" />
@@ -17,7 +17,7 @@
       </div>
       <!-- 按钮 -->
       <div class="btn c">
-        <button @click="login">登录</button>
+        <button @click="login">注册</button>
       </div>
     </div>
   </div>
@@ -25,7 +25,15 @@
 
 <script>
 export default {
-name:'Logup'
+name:'Logup',
+  data(){
+    return {
+
+    }
+  },
+  methods:{
+
+  }
 }
 </script>
 
