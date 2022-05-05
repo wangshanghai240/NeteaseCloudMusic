@@ -10,7 +10,9 @@
       <div class="auth">
         <input type="text" v-model="captcha" placeholder="输入验证码" />
         <div class="getauthid" @click.prevent="getauth">
-          <span class="cap" :class={active:isclickcode}><a href="#">{{ this.vertifytext }}</a></span>
+          <span class="cap" :class="{ active: isclickcode }"
+            ><a href="#">{{ this.vertifytext }}</a></span
+          >
         </div>
       </div>
       <!-- 按钮 -->
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-import { loginCellPhone, getAuthID } from "@/api/login/login.js";
+import { loginCellPhone, getAuthID, verifyCode } from "@/api/login/login.js";
 export default {
   name: "Login",
   data() {
@@ -32,8 +34,8 @@ export default {
       vertifytext: "获取验证码",
       isclickcode: false,
       showcount: false,
-      cookie:"",
-      token:""
+      cookie: "",
+      token: "",
     };
   },
   methods: {
@@ -42,10 +44,7 @@ export default {
       this.getLastTime();
       // 发送请求
       getAuthID(this.phone).then((res) => {
-        localStorage.setItem("cookie",this.cookie)
-        sessionStorage.setItem("token",this.token)
-        this.cookie = res.data.cookie
-        this.token = res.data.token
+        console.log(res);
       });
     },
     // 发送验证码定时器
@@ -53,7 +52,7 @@ export default {
       let count = 60;
       // 刚开始isclickcode为false,若为true，return之后的代码无法执行
       if (this.isclickcode) return;
-      let timer = setInterval( ()=> {
+      let timer = setInterval(() => {
         if (count === 0) {
           this.isclickcode = false;
           this.vertifytext = "重新获取";
@@ -66,99 +65,33 @@ export default {
     },
     // 登录
     login() {
-      // 发送请求
-      loginCellPhone(this.phone, this.captcha).then((res) => {
-        console.log(res);
-      });
+      // 调用验证方法
+      this.verify()
       console.log(this.$route);
+    },
+    // 校验验证码
+    verify() {
+      verifyCode(this.phone, this.captcha).then((rescode) => {
+        if (rescode.data.code === 200) {
+          console.log(rescode.data.message);
+          // 验证通过请求才发送登录请求
+          loginCellPhone(this.phone, this.captcha).then((res) => {
+            console.log(res);
+            this.cookie = res.data.cookie;
+            this.token = res.data.token;
+            console.log(this.cookie, this.token);
+            localStorage.setItem("cookie", this.cookie);
+            sessionStorage.setItem("token", this.token);
+          });
+        } else {
+          console.log(rescode.data.message);
+        }
+      });
     },
   },
 };
 </script>
 
 <style scoped>
-.login {
-  width: 25vw;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 0.1em solid #d0d0d0;
-  border-radius: 0.28em;
-  box-sizing: border-box;
-  box-shadow: 0 0 0.21em 0.1em #d0d0d0;
-}
-.login .form {
-  width: 78%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.form .title {
-  margin: 0.34em 0;
-  color: #ba2323;
-  font-size: 1.2em;
-  font-weight: 600;
-}
-.login .form input {
-  min-width: 5vw;
-  border: 0.13em solid #d0d0d0;
-  outline: none;
-  padding: 0.33em 0.34em;
-  border-radius: 0.26em;
-  box-sizing: border-box;
-  margin: 0.56em 0;
-}
-.login .form input:focus {
-  border-bottom: 0.13em solid #ba2323;
-}
-.login .form .c {
-  width: 79%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex: 1 1 50%;
-}
-/* 验证码 */
-.auth .getauthid {
-  position: relative;
-  /* margin-top:-3.9em; */
-  /* border:.1em solid #777777; */
-  border-radius: 0.23em;
-  font-size: 0.5em;
-  padding: 0.15em 0.16em;
-  color: #777;
-  cursor: pointer;
-  margin-left: 0.23em;
-}
-.auth .getauthid .cap {
-  position: absolute;
-  top: -3.5em;
-  right: 0.5em;
-  
-}
-.auth .getauthid .active{
-  /* pointer-events: none; */
-}
-.auth .getauthid .cap a:link{
-  text-decoration:none;
-  color:#808080;
-}
-.auth .getauthid .cap a:visited{
-  /* color:rgb(183, 51, 51); */
-}
-.form .btn button {
-  margin: 1em 0 0.8em 0;
-  padding: 0.3em;
-  width: 60%;
-  background: linear-gradient(to right, rgb(198, 137, 137), #c33838);
-  border: none;
-  outline: none;
-  border-radius: 0.34em;
-  color: #fff;
-  cursor: pointer;
-}
+@import '@/assets/css/loginup.css'
 </style>

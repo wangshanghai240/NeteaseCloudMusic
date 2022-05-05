@@ -16,3 +16,18 @@ export function getAuthID(authid){
         params:{phone:authid}
     })
 }
+// 刷新登录状态
+export function refreshLogin(){
+    return request({
+        url:'/login/refresh',
+        method:'get'
+    })
+}
+// 校验验证码
+export function verifyCode(phone,captcha){
+    return request({
+        url:"/captcha/verify",
+        method:'get',
+        params:{phone,captcha}
+    })
+}

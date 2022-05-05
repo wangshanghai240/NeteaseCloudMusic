@@ -4,19 +4,19 @@ import Vue from 'vue'
 Vue.use(VueRouter)
 
 // 导入路由列表
-let routes = []
+let myroutes = []
 const fileroute = import.meta.globEager('./modules/**/*.js')
 Object.keys(fileroute).forEach(item => {
     fileroute[item].default.forEach(i => {
-        routes.push(i)
+        myroutes.push(i)
     })
 })
 console.log(import.meta);
-console.log(routes);
+console.log(myroutes);
 // 创建路由对象
 const router = new VueRouter({
     mode: 'history',
-    routes
+    routes:myroutes
 })
 // 重复点击触发promise错误解决方法
 // const originalPush = vuerouter.prototype.push
