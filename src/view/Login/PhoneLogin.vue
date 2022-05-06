@@ -1,14 +1,14 @@
 <template>
   <div class="login">
     <div class="form">
-      <div class="title c"><span>极速登录</span></div>
+      <div class="title c"><span class="quic">极速登录</span></div>
       <!-- 手机号 -->
       <div class="pho c">
-        <input type="text" v-model="phone" placeholder="请输入手机号" />
+        <input type="text" class="phone a" v-model="phone" placeholder="请输入手机号" />
       </div>
       <!-- 验证码 -->
       <div class="auth">
-        <input type="text" v-model="captcha" placeholder="输入验证码" />
+        <input type="text" class="captcha a" v-model="captcha" placeholder="输入验证码" />
         <div class="getauthid" @click.prevent="getauth">
           <span class="cap" :class="{ active: isclickcode }"
             ><a href="#">{{ this.vertifytext }}</a></span
@@ -17,7 +17,7 @@
       </div>
       <!-- 按钮 -->
       <div class="btn c">
-        <button @click="login">登录</button>
+        <button class="btn-b" @click="login">登录</button>
       </div>
     </div>
   </div>
@@ -93,5 +93,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/css/loginup.css'
+@import '@/assets/css/loginup.css' 
 </style>

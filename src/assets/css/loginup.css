@@ -1,83 +1,59 @@
-.login {
-    width: 25vw;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.1em solid #d0d0d0;
-    border-radius: 0.28em;
-    box-sizing: border-box;
-    box-shadow: 0 0 0.21em 0.1em #d0d0d0;
-  }
-  .login .form {
-    width: 78%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .form .title {
-    margin: 0.34em 0;
-    color: #ba2323;
-    font-size: 1.2em;
-    font-weight: 600;
-  }
-  .login .form input {
-    min-width: 5vw;
-    border: 0.13em solid #d0d0d0;
-    outline: none;
-    padding: 0.33em 0.34em;
-    border-radius: 0.26em;
-    box-sizing: border-box;
-    margin: 0.56em 0;
-  }
-  .login .form input:focus {
-    border-bottom: 0.13em solid #ba2323;
-  }
-  .login .form .c {
-    width: 79%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex: 1 1 50%;
-  }
-  /* 验证码 */
-  .auth .getauthid {
-    position: relative;
-    /* margin-top:-3.9em; */
-    /* border:.1em solid #777777; */
-    border-radius: 0.23em;
-    font-size: 0.5em;
-    padding: 0.15em 0.16em;
-    color: #777;
-    cursor: pointer;
-    margin-left: 0.23em;
-  }
-  .auth .getauthid .cap {
-    position: absolute;
-    top: -3.5em;
-    right: 0.5em;
-  }
-  .auth .getauthid .active {
-    /* pointer-events: none; */
-  }
-  .auth .getauthid .cap a:link {
-    text-decoration: none;
-    color: #808080;
-  }
-  .auth .getauthid .cap a:visited {
-    /* color:rgb(183, 51, 51); */
-  }
-  .form .btn button {
-    margin: 1em 0 0.8em 0;
-    padding: 0.3em;
-    width: 60%;
-    background: linear-gradient(to right, rgb(198, 137, 137), #c33838);
-    border: none;
-    outline: none;
-    border-radius: 0.34em;
-    color: #fff;
-    cursor: pointer;
-  }
+
+.login{
+  /* border:.1px solid black; */
+  margin:.34em auto;
+}
+.form{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  /* 不换行就会溢出 */
+  flex-wrap:wrap;
+}
+.c{
+  width:100%;
+  text-align:center;
+  margin:.34em 0;
+  /* flex:1; */
+}
+.c .quic{
+  display:inline-block;
+  margin:.12em 0;
+  font-weight: 600;
+}
+.form .a{
+  padding:.3em .2em;
+  border:.15em solid rgb(197, 197, 197);
+  outline:none;
+  box-sizing:border-box;
+  border-radius:.34em;
+  margin:.4em 0 ;
+}
+.form .a:focus{
+  border-bottom:.19em solid rgb(195, 52, 0);
+}
+.form .a::placeholder{
+  color:#d0d0d0;
+  font-size:.88em;
+}
+.form .auth a{
+  text-decoration:none;
+  color:#777;
+  font-size:.68em;
+}
+/* 设置验证码位置 */
+.form .auth .getauthid{
+  position:absolute;
+  margin-top:-1.9em;
+  margin-left:6.4em;
+}
+.c .btn-b{
+  width:30%;
+  background:linear-gradient(to right, rgb(182, 101, 101),rgb(161, 28, 28));
+  border:none;
+  border-radius:.34em;
+  outline:none;
+  padding:.3em 0;
+  color:#fff;
+  cursor:pointer;
+}

@@ -28,11 +28,15 @@ export default {
 name:'Logup',
   data(){
     return {
-
+      phone:"",
+      captcha:'',
+      vertifytext:'',
+      isclickcode:false
     }
   },
   methods:{
-
+    getauth(){},
+    login(){}
   }
 }
 </script>

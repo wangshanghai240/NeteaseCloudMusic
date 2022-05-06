@@ -31,3 +31,26 @@ export function verifyCode(phone,captcha){
         params:{phone,captcha}
     })
 }
+// 邮箱登录
+export function emalog(email,password){
+    return request({
+        url:'/login',
+        method:'get',
+        params:{email,password}
+    })
+}
+// 获取二维码的unikey
+export function getUnikey(){
+    return request({
+        url:'/login/qr/key',
+        method:'get'
+    })
+}
+// 使用key生成二维码登录
+export function qrCode(key,qrimg){
+    return request({
+        url:"/login/qr/create",
+        method:"get",
+        params:{key,qrimg}
+    })
+}
