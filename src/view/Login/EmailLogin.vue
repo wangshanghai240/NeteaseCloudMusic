@@ -6,8 +6,8 @@
     <div class="pwd">
       <input type="password" name="" placeholder="输入密码" class="c" v-model="pwd" />
     </div>
-    <div class="btn" @click="emaillogin">
-      <button class="btn-c">登录</button>
+    <div class="btn" >
+      <button @click="emaillogin" class="btn-c">登录</button>
     </div>
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
 <style scoped>
 .email{
   /* border:.1em solid black; */
-
+  margin-top:2em;
 }
 .youxiang .c, .pwd .c{
   border:.16em solid rgb(197, 197, 197);

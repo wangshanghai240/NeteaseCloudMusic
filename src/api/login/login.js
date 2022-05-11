@@ -54,3 +54,11 @@ export function qrCode(key,qrimg){
         params:{key,qrimg}
     })
 }
+// 轮询二维码接口
+export function initqrcode(key){
+    return request({
+        url:'/login/qr/check',
+        method:'get',
+        params:{key}
+    })
+}

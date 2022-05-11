@@ -67,7 +67,7 @@ export default {
     login() {
       // 调用验证方法
       this.verify()
-      console.log(this.$route);
+      this.$router.push('/')
     },
     // 校验验证码
     verify() {

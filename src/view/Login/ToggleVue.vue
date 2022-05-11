@@ -8,9 +8,15 @@
       </div>
     </div>
     <!-- 对应组件 -->
-    <div class="com">
-      <router-view></router-view>
-    </div>
+    <keep-alive>
+      <div class="com">
+        <router-view></router-view>
+      </div>
+    </keep-alive>
+
+    <!-- <keep-alive>
+      <components :is=""></components>
+    </keep-alive> -->
   </div>
 </template>
 
@@ -37,8 +43,8 @@ export default {
   },
   methods: {
     toggle(c) {
-      this.currentindex = c
-    },
+      this.currentindex = c;
+    }
   },
 };
 </script>
@@ -48,7 +54,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -56,24 +62,26 @@ export default {
   border-radius: .23em;
   box-shadow: 0 0 .19em .19em #e7e7e7;
   width: 24%;
-  min-width:15%;
+  height: 28vh;
+  min-width: 15%;
 }
 
 .toggle .bb {
-  display:flex;
+  display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-wrap:nowrap;
+  flex-wrap: nowrap;
   /* 只能设置宽度100vw占满一行 */
-  width:100vw;
-  margin-top:.34em;
+  width: 100vw;
+  margin: .34em 0;
 }
 
-.tab .active {
+.tab .active{
   padding: 0 0 .23em 0;
   border-bottom: .14em solid #f40;
-  color: #f40;
+  color: #f50;
   box-sizing: border-box;
+  transition:border-bottom .4s linear .2s, color 1s;
 }
 
 .tab {
@@ -81,14 +89,14 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-
 .tab .csgo {
   display: inline-block;
   text-decoration: none;
   color: rgb(31, 31, 31);
   /* flex: 1; */
 }
-.toggle .com{
-  margin:.8em 0 0 .6em;
+
+.toggle .com {
+  height: 24vh;
 }
 </style>

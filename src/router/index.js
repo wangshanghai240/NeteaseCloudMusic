@@ -29,6 +29,8 @@ const router = new VueRouter({
 //     console.log(to);
 //     console.log(from);
 //     console.log(next);
+//     next({name:'手机号登录'})
+//     return
 // })
 // 导出路由
 export default router
