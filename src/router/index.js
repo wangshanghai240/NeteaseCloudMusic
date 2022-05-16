@@ -25,12 +25,15 @@ const router = new VueRouter({
 // }
 
 // router.beforeEach((to,from,next)=>{
-    
+//     if(to.path === '/login/phone'){
+//       next({name:'手机号登录'})
+//     return  
+//     }
+//     next()
 //     console.log(to);
 //     console.log(from);
 //     console.log(next);
-//     next({name:'手机号登录'})
-//     return
+    
 // })
 // 导出路由
 export default router

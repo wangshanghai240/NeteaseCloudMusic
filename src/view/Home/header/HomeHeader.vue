@@ -1,19 +1,32 @@
 <template>
     <div class="home">
         <search></search>
-        <showlogin class="pos"></showlogin>
+        <search-login class="pos">
+            <template v-slot:image v-if='userb'>
+                <img :src="userb" alt="">
+            </template>
+            <template v-slot:login v-if='username'>
+                <span>{{username}}</span>
+            </template>
+        </search-login>
     </div>
 </template>
 
 <script>
 import Search from './HeaderCom/Search.vue'
-import showlogin from './HeaderCom/ShowLogin.vue'
-
+import SearchLogin from './HeaderCom/SearchLogin.vue'
+import { mapState } from 'vuex'
 export default {
     name: 'HomeHeader',
     components: {
-        Search, showlogin
-    }
+        Search, 
+        SearchLogin
+    },
+    computed:mapState({
+        // 胖函数形式
+        userb:state=>state.userbackground,
+        username:(state)=>state.username
+    })
 }
 </script>
 
@@ -21,10 +34,10 @@ export default {
 .home {
     width: 100%;
     height: 2.7em;
-    background: rgba(237, 237, 237, 0.474);
+    background: rgba(213, 14, 14, 0.678);
     position: relative;
 }
-.pos{
+.home .pos{
     position:absolute;
     top:50%;
     left:80%;

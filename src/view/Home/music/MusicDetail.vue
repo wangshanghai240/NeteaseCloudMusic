@@ -17,8 +17,7 @@ export default {
     },
     props:{
         index:{
-            type:Number,
-            require:true
+            type:Number
         },
         tab:{
             type:Array,

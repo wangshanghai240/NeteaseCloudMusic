@@ -4,11 +4,21 @@
       <div class="title c"><span class="quic">极速登录</span></div>
       <!-- 手机号 -->
       <div class="pho c">
-        <input type="text" class="phone a" v-model="phone" placeholder="请输入手机号" />
+        <input
+          type="text"
+          class="phone a"
+          v-model="phone"
+          placeholder="请输入手机号"
+        />
       </div>
       <!-- 验证码 -->
       <div class="auth">
-        <input type="text" class="captcha a" v-model="captcha" placeholder="输入验证码" />
+        <input
+          type="text"
+          class="captcha a"
+          v-model="captcha"
+          placeholder="输入验证码"
+        />
         <div class="getauthid" @click.prevent="getauth">
           <span class="cap" :class="{ active: isclickcode }"
             ><a href="#">{{ this.vertifytext }}</a></span
@@ -36,6 +46,8 @@ export default {
       showcount: false,
       cookie: "",
       token: "",
+      avatarurl: "",
+      nickname: "",
     };
   },
   methods: {
@@ -66,8 +78,8 @@ export default {
     // 登录
     login() {
       // 调用验证方法
-      this.verify()
-      this.$router.push('/')
+      this.verify();
+      this.$router.push("/");
     },
     // 校验验证码
     verify() {
@@ -79,9 +91,18 @@ export default {
             console.log(res);
             this.cookie = res.data.cookie;
             this.token = res.data.token;
+            (this.avatarurl = res.data.profile.avatarUrl),
+              (this.nickname = res.data.nickname);
             console.log(this.cookie, this.token);
             localStorage.setItem("cookie", this.cookie);
             sessionStorage.setItem("token", this.token);
+            this.$store.dispatch(
+              "getcookie",
+              this.cookie,
+              this.token,
+              this.avatarurl,
+              this.nickname
+            );
           });
         } else {
           console.log(rescode.data.message);
@@ -93,5 +114,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/css/loginup.css' 
+@import "@/assets/css/loginup.css";
 </style>

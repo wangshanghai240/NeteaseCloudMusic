@@ -1,6 +1,10 @@
 import {createVuePlugin} from 'vite-plugin-vue2'
 import { defineConfig } from 'vite'
-const {resolve, default: path} = require('path')
+const {resolve} = require('path')
+// const path = require('path')
+// function resolve(dir){
+//     path.join(__dirname,dir)
+// }
 // import { defineConfig } from 'vite'
 export default defineConfig({
     // base:"./",

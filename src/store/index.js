@@ -1,4 +1,4 @@
-// vuex 3版本不支持以下方式
+// vuex 2版本不支持以下方式
 // import { createStore} from 'vuex'
 // import { createApp} from 'vue'
 import vue from 'vue'
@@ -16,7 +16,7 @@ vue.use(Vuex)
 const store = new Vuex.Store({
     state,
     getters,
-    mutations
+    mutations,
 })
 
 // const app = createApp()
