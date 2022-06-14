@@ -23,7 +23,9 @@ export default {
   },
   methods:{
     login(){
-      this.$router.push('/login/phone')
+      this.$router.push({
+        name:'手机号登录'
+      })
     }
   }
 }
@@ -44,7 +46,7 @@ export default {
     /* border:.1em solid black; */
     border-radius:50%;
     vertical-align: middle;
-    
+    z-index:9;
   }
   .imge img{
     width:100%;

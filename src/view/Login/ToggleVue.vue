@@ -65,7 +65,6 @@ export default {
   height: 28vh;
   min-width: 15%;
 }
-
 .toggle .bb {
   display: flex;
   justify-content: space-around;

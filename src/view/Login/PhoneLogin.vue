@@ -91,17 +91,19 @@ export default {
             console.log(res);
             this.cookie = res.data.cookie;
             this.token = res.data.token;
-            (this.avatarurl = res.data.profile.avatarUrl),
-              (this.nickname = res.data.nickname);
+            this.avatarurl = res.data.profile.avatarUrl,
+            this.nickname = res.data.profile.nickname;
             console.log(this.cookie, this.token);
             localStorage.setItem("cookie", this.cookie);
             sessionStorage.setItem("token", this.token);
             this.$store.dispatch(
-              "getcookie",
-              this.cookie,
-              this.token,
-              this.avatarurl,
-              this.nickname
+              "getcoo",
+              {
+              cookie:this.cookie,
+              token:this.token,
+              back:this.avatarurl,
+              name:this.nickname
+             } 
             );
           });
         } else {

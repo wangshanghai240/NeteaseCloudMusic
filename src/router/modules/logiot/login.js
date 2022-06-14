@@ -7,7 +7,10 @@ export default [
             {
                 path:'phone',
                 name:"手机号登录",
-                component:()=>import('@/view/Login/PhoneLogin.vue')
+                component:()=>import('@/view/Login/PhoneLogin.vue'),
+                meta:{
+                    fangke:true
+                }
             },
             {
                 path:"email",

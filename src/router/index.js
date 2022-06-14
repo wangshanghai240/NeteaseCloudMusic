@@ -25,15 +25,11 @@ const router = new VueRouter({
 // }
 
 // router.beforeEach((to,from,next)=>{
-//     if(to.path === '/login/phone'){
+//     if(to.path === '/login/phone' && to.meta.fangke){
 //       next({name:'手机号登录'})
 //     return  
 //     }
-//     next()
-//     console.log(to);
-//     console.log(from);
-//     console.log(next);
     
 // })
 // 导出路由
-export default router
+export default router 
